@@ -5,20 +5,22 @@
 using namespace std;
 
 int main() {
-
-    Car car1(1, "Toyota", "Camry", 2020, 50.0);
-    Car car2(2, "Honda", "Civic", 2019, 45.0);
+    // to create an array of Car objects
+    Car cars[] = {
+        Car(1, "Toyota", "Camry", 2020, 50.0),
+        Car(2, "Honda", "Civic", 2019, 45.0),
+        Car(3, "Ford", "Fusion", 2018, 40.0)
+    };
 
     Customer customer1(1, "Alice", "alice@example.com");
     Customer customer2(2, "Bob", "bob@example.com");
 
-    cout << "Details of Car 1:" << endl;
-    car1.getDetails();
-    cout << endl;
-
-    cout << "Details of Car 2:" << endl;
-    car2.getDetails();
-    cout << endl;
+    // to display the details of the car
+    for (int i = 0; i < 3; ++i) {
+        cout << "Details of Car " << i + 1 << ":" << endl;
+        cars[i].getDetails();
+        cout << endl;
+    }
 
     cout << "Details of Customer 1:" << endl;
     customer1.getDetails();
