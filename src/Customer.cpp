@@ -6,9 +6,9 @@ Customer::Customer(int id, string name, string contact)
     : id(id), name(name), contact(contact) {}
 
 void Customer::getDetails() const {
-    cout << "ID: " << id << "\nName: " << name << "\nContact: " << contact << endl;
+    cout << "ID: " << this->id << "\nName: " << this->name << "\nContact: " << this->contact << endl;
 }
 
 void Customer::updateContact(string newContact) {
-    contact = newContact;
+    this->contact = newContact;
 }
