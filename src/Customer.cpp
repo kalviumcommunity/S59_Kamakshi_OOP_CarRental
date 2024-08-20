@@ -16,3 +16,7 @@ void Customer::getDetails() const {
 void Customer::updateContact(string newContact) {
     this->contact = newContact;
 }
+
+int Customer::getCustomerCount() {
+    return customerCount; // to return the current car count
+}

@@ -21,6 +21,8 @@ public:
     void rent();
     void returnCar();
     bool checkAvailability() const;
+
+    static int getCarCount();  // static member function to access car count
 };
 
 #endif
