@@ -5,15 +5,16 @@
 using namespace std;
 
 int main() {
-    // to create an array of Car objects
-    Car cars[] = {
+    // dynamically allocating memory for an array of car objects
+    Car* cars = new Car[3]{
         Car(1, "Toyota", "Camry", 2020, 50.0),
         Car(2, "Honda", "Civic", 2019, 45.0),
         Car(3, "Ford", "Fusion", 2018, 40.0)
     };
 
-    Customer customer1(1, "Alice", "alice@example.com");
-    Customer customer2(2, "Bob", "bob@example.com");
+    // dynamically allocating memory for customer objects
+    Customer* customer1 = new Customer(1, "Alice", "alice@example.com");
+    Customer* customer2 = new Customer(2, "BoB", "bob@example.com");
 
     // to display the details of the car
     for (int i = 0; i < 3; ++i) {
@@ -23,12 +24,17 @@ int main() {
     }
 
     cout << "Details of Customer 1:" << endl;
-    customer1.getDetails();
+    customer1->getDetails();
     cout << endl;
 
     cout << "Details of Customer 2:" << endl;
-    customer2.getDetails();
+    customer2->getDetails();
     cout << endl;
+
+    // deallocating memory
+    delete[] cars;          
+    delete customer1;       
+    delete customer2;
 
     return 0;
 }
