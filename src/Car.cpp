@@ -32,3 +32,7 @@ void Car::returnCar() {
 bool Car::checkAvailability() const {
     return this->isAvailable;
 }
+
+int Car::getCarCount() {
+    return carCount; // to return the current car count
+}

@@ -17,6 +17,7 @@ public:
     void getDetails() const;
     void updateContact(string newContact);
 
+    static int getCustomerCount();  // static member fucntion to access customer count
 };
 
 #endif

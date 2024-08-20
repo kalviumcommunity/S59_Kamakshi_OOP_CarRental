@@ -23,6 +23,9 @@ int main() {
         cout << endl;
     }
 
+    // to display the total numbers of cars 
+      cout << "Total number of cars: " << Car::getCarCount() << endl;
+
     cout << "Details of Customer 1:" << endl;
     customer1->getDetails();
     cout << endl;
@@ -30,6 +33,9 @@ int main() {
     cout << "Details of Customer 2:" << endl;
     customer2->getDetails();
     cout << endl;
+
+    // to display the total number of customers
+    cout << "Total number of customers: " << Customer::getCustomerCount() << endl;
 
     // deallocating memory
     delete[] cars;          
