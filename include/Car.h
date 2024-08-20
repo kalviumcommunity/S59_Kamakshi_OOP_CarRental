@@ -13,6 +13,8 @@ private:
     double rentalPrice;
     bool isAvailable;
 
+    static int carCount; // static variable to count the number of cars
+
 public:
     Car(int id, string make, string model, int year, double rentalPrice);
     void getDetails() const;

@@ -2,8 +2,12 @@
 #include <iostream>
 using namespace std;
 
+int Car::carCount = 0; // to initanize static variable
+
 Car::Car(int id, string make, string model, int year, double rentalPrice)
-    : id(id), make(make), model(model), year(year), rentalPrice(rentalPrice), isAvailable(true) {}
+    : id(id), make(make), model(model), year(year), rentalPrice(rentalPrice), isAvailable(true) {
+        carCount++;
+    }
 
 void Car::getDetails() const {
     cout << "ID: " << this->id << "\nMake: " << this->make << "\nModel: " << this->model
