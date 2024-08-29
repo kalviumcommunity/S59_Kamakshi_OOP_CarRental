@@ -4,10 +4,24 @@ using namespace std;
 
 int Customer::customerCount = 0; // to initialize static variable
 
+// default constructor
+Customer::Customer() : id(0), name("Unknown"), contact("Unknown") {
+    customerCount++;
+    cout << "Default constructor called." << endl;
+}
+
+// parameterized constructor
 Customer::Customer(int id, string name, string contact)
     : id(id), name(name), contact(contact) {
-        customerCount++; // to increment customer count when a new customer gets added
-    }
+    customerCount++;
+    cout << "Parameterized constructor called." << endl;
+}
+
+// destructor
+Customer::~Customer() {
+    customerCount--;
+    cout << "Destructor called for Customer ID: " << id << endl;
+}
 
 // accessor methods
 int Customer::getId() const { return id; }

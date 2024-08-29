@@ -17,7 +17,9 @@ private:
     static int carCount; // static variable to count the number of cars
 
 public:
-    Car(int id, string make, string model, int year, double rentalPrice); // constructor is public
+   Car();  // default constructor
+   Car(int id, string make, string model, int year, double rentalPrice); // parameterized constructor
+   ~Car(); // destructor
 
     // Public accessor (getter) methods
     int getId() const;
