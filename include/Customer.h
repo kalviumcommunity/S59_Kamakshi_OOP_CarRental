@@ -15,7 +15,9 @@ private:
     static int customerCount; // static varibale to count the numbers of customers
 
 public:
-    Customer(int id, string name, string contact); // constructor is public
+    Customer(); // default constructor
+    Customer(int id, string name, string contact); // parameterized constructor
+    ~Customer(); // destructor
 
 
     // public accessor (getter) methods
