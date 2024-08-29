@@ -6,6 +6,8 @@ using namespace std;
 
 class Customer {
 private:
+
+// private: only accessible within this class
     int id;
     string name;
     string contact;
@@ -13,21 +15,22 @@ private:
     static int customerCount; // static varibale to count the numbers of customers
 
 public:
-    Customer(int id, string name, string contact);
+    Customer(int id, string name, string contact); // constructor is public
 
-    // accessor (getter) methods
+
+    // public accessor (getter) methods
     int getId() const;
     string getName() const;
     string getContact() const;
 
-    // mutator (setter) methods
+    //  Public mutator (setter) methods
     void setName(const string& newName);
     void setContact(const string& newContact);
 
     void getDetails() const;
     void updateContact(string newContact);
 
-    static int getCustomerCount();  // static member fucntion to access customer count
+    static int getCustomerCount();  //  public static member fucntion to access customer count
 };
 
 #endif
