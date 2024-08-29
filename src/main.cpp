@@ -14,7 +14,13 @@ int main() {
 
     // dynamically allocating memory for customer objects
     Customer* customer1 = new Customer(1, "Alice", "alice@example.com");
-    Customer* customer2 = new Customer(2, "BoB", "bob@example.com");
+    Customer* customer2 = new Customer(2, "Bob", "bob@example.com");
+
+    // to demonstrate usage of accessors and mutators
+    customer1->setName("Alice Johnson");
+    customer2->setContact("bob123@example.com");
+    cars[0].setRentalPrice(55.0);
+    cars[1].setAvailability(false);
 
     // to display the details of the car
     for (int i = 0; i < 3; ++i) {
@@ -23,8 +29,8 @@ int main() {
         cout << endl;
     }
 
-    // to display the total numbers of cars 
-      cout << "Total number of cars: " << Car::getCarCount() << endl;
+
+    cout << "Total number of cars: " << Car::getCarCount() << endl;
 
     cout << "Details of Customer 1:" << endl;
     customer1->getDetails();
@@ -34,7 +40,7 @@ int main() {
     customer2->getDetails();
     cout << endl;
 
-    // to display the total number of customers
+
     cout << "Total number of customers: " << Customer::getCustomerCount() << endl;
 
     // deallocating memory
