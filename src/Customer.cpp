@@ -9,6 +9,16 @@ Customer::Customer(int id, string name, string contact)
         customerCount++; // to increment customer count when a new customer gets added
     }
 
+// accessor methods
+int Customer::getId() const { return id; }
+string Customer::getName() const { return name; }
+string Customer::getContact() const { return contact; }
+
+// mutator methods
+void Customer::setName(const string& newName) { name = newName; }
+void Customer::setContact(const string& newContact) { contact = newContact; }
+
+
 void Customer::getDetails() const {
     cout << "ID: " << this->id << "\nName: " << this->name << "\nContact: " << this->contact << endl;
 }

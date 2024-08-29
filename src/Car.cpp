@@ -9,6 +9,21 @@ Car::Car(int id, string make, string model, int year, double rentalPrice)
         carCount++;
     }
 
+// accessor methods
+int Car::getId() const { return id; }
+string Car::getMake() const { return make; }
+string Car::getModel() const { return model; }
+int Car::getYear() const { return year; }
+double Car::getRentalPrice() const { return rentalPrice; }
+bool Car::getAvailability() const { return isAvailable; }
+
+// mutator methods
+void Car::setMake(const string& newMake) { make = newMake; }
+void Car::setModel(const string& newModel) { model = newModel; }
+void Car::setYear(int newYear) { year = newYear; }
+void Car::setRentalPrice(double newRentalPrice) { rentalPrice = newRentalPrice; }
+void Car::setAvailability(bool availability) { isAvailable = availability; }
+
 void Car::getDetails() const {
     cout << "ID: " << this->id << "\nMake: " << this->make << "\nModel: " << this->model
          << "\nYear: " << this->year << "\nRental Price: " << this->rentalPrice
