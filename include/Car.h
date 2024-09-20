@@ -39,6 +39,7 @@ public:
     // public: accessible outside the class
     virtual void getDetails() const;
     void rent();
+    void rent(int days);
     void returnCar();
     bool checkAvailability() const;
 

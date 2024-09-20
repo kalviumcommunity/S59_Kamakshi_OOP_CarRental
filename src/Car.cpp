@@ -42,8 +42,8 @@ void Car::getDetails() const {
     cout << "ID: " << this->id << "\nMake: " << this->make << "\nModel: " << this->model
          << "\nYear: " << this->year << "\nRental Price: " << this->rentalPrice
          << "\nAvailable: " << (this->isAvailable ? "Yes" : "No") << endl;
-}
 
+}//existing method
 void Car::rent() {
     if (this->isAvailable) {
         this->isAvailable = false;
@@ -52,6 +52,17 @@ void Car::rent() {
         cout << "Car is not available." << endl;
     }
 }
+
+//overloaded version with rental duration 
+void Car::rent(int days) {
+    if (this->isAvailable) {
+        this->isAvailable = false;
+        cout << "Car rented for " << days << " days." << endl;
+    } else {
+        cout << "Car is not available." << endl;
+    }
+}
+
 
 void Car::returnCar() {
     this->isAvailable = true;
