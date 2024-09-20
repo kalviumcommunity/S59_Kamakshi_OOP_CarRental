@@ -1,12 +1,14 @@
+#include "Car.cpp"
+#include "Customer.cpp"
+#include "ElectricCar.cpp"
+#include "LuxuryCar.cpp"
 #include <iostream>
-#include "Car.h"
-#include "Customer.h"
 
 using namespace std;
 
 int main() {
     // dynamically allocating memory for an array of car objects
-    Car* cars = new Car[3]{
+    Car* cars = new Car[3]{ 
         Car(1, "Toyota", "Camry", 2020, 50.0),
         Car(2, "Honda", "Civic", 2019, 45.0),
         Car(3, "Ford", "Fusion", 2018, 40.0)
@@ -43,10 +45,29 @@ int main() {
 
     cout << "Total number of customers: " << Customer::getCustomerCount() << endl;
 
+      ElectricCar* electricCar = new ElectricCar(4, "Tesla", "Model 3", 2021, 60.0, 400); // Assume 400 km range
+    cout << "Details of Electric Car:" << endl;
+    electricCar->getDetails();
+    electricCar->chargeBattery(); // ElectricCar specific method
+    cout << "Electric Car Range after charge: " << electricCar->getRange() << " km" << endl;
+    cout << endl;
+
+    // Demonstrating LuxuryCar
+    LuxuryCar* luxuryCar = new LuxuryCar(5, "BMW", "7 Series", 2022, 100.0, true); // Assume luxuryPackage = true
+    cout << "Details of Luxury Car:" << endl;
+    luxuryCar->getDetails();
+    if (luxuryCar->getHasSunroof()) {
+        cout << "This luxury car has a sunroof!" << endl;
+    }
+    cout << endl;
+
+
     // deallocating memory
     delete[] cars;          
     delete customer1;       
     delete customer2;
+    delete electricCar; 
+    delete luxuryCar;  
 
     return 0;
 }

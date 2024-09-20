@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "./../include/Customer.h"
 #include <iostream>
 using namespace std;
 
@@ -7,7 +7,6 @@ int Customer::customerCount = 0; // to initialize static variable
 // default constructor
 Customer::Customer() : id(0), name("Unknown"), contact("Unknown") {
     customerCount++;
-    cout << "Default constructor called." << endl;
 }
 
 // parameterized constructor

@@ -37,7 +37,7 @@ public:
     void setAvailability(bool availability);
 
     // public: accessible outside the class
-    void getDetails() const;
+    virtual void getDetails() const;
     void rent();
     void returnCar();
     bool checkAvailability() const;
