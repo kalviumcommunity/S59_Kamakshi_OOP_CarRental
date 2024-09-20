@@ -1,4 +1,4 @@
-#include "Car.h"
+#include "./../include/Car.h"
 #include <iostream>
 using namespace std;
 
@@ -14,7 +14,6 @@ Car::Car() : id(0), make("Unknown"), model("Unknown"), year(0), rentalPrice(0.0)
 Car::Car(int id, string make, string model, int year, double rentalPrice)
     : id(id), make(make), model(model), year(year), rentalPrice(rentalPrice), isAvailable(true) {
     carCount++;
-    cout << "Parameterized constructor called." << endl;
 }
 
 // destructor
