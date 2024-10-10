@@ -19,7 +19,7 @@ private:
 public:
    Car();  // default constructor
    Car(int id, string make, string model, int year, double rentalPrice); // parameterized constructor
-   ~Car(); // destructor
+    virtual ~Car(); // virtual destructor 
 
     // Public accessor (getter) methods
     int getId() const;
@@ -37,7 +37,8 @@ public:
     void setAvailability(bool availability);
 
     // public: accessible outside the class
-    virtual void getDetails() const;
+    virtual void getDetails() const = 0; // pure virtual function (abstract method)
+
     void rent();
     void rent(int days);
     void returnCar();
