@@ -1,52 +1,41 @@
 #include <iostream>
-#include "Car.cpp"
-#include "Customer.cpp"
-#include "ElectricCar.cpp"
-#include "LuxuryCar.cpp"
-using namespace std;
+#include <vector>
+#include "ElectricCar.h"
+#include "LuxuryCar.h"
 
-int maain() {
-    // Create cars
+int main() {
+    // Create a vector of rentable items
+    std::vector<IRental*> rentals;
+    
+    // Create different types of cars
     ElectricCar* electricCar = new ElectricCar(4, "Tesla", "Model 3", 2021, 60.0, 400);
     LuxuryCar* luxuryCar = new LuxuryCar(5, "BMW", "7 Series", 2022, 100.0, true);
-
-    // Create customers
-    Customer* customer1 = new Customer(1, "Alice", "alice@example.com");
-    Customer* customer2 = new Customer(2, "Bob", "bob@example.com");
-
-    // Display initial details
-    cout << "Initial Car Details:" << endl;
-    electricCar->getDetails();
-    cout << endl;
-    luxuryCar->getDetails();
-    cout << endl;
-
-    // Demonstrate rental operations using RentalManager
-    RentalManager::rentCar(electricCar);
-    RentalManager::rentCar(luxuryCar, 7);  // Rent for 7 days
-
-    // Display details after rental
-    cout << "\nCar Details After Rental:" << endl;
-    electricCar->getDetails();
-    cout << endl;
-    luxuryCar->getDetails();
-    cout << endl;
-
-    // Return cars
-    RentalManager::returnCar(electricCar);
-    RentalManager::returnCar(luxuryCar);
-
-    // Display final details
-    cout << "\nCar Details After Return:" << endl;
-    electricCar->getDetails();
-    cout << endl;
-    luxuryCar->getDetails();
-
+    
+    // Add them to the rentals vector
+    rentals.push_back(electricCar);
+    rentals.push_back(luxuryCar);
+    
+    // Demonstrate rental cost calculation for different types
+    for (const auto& rental : rentals) {
+        std::cout << "Rental cost for 7 days: $" << rental->calculateRentalCost(7) << std::endl;
+    }
+    
+    // Demonstrate rental operations
+    electricCar->rent(7);
+    luxuryCar->rent(3);
+    
+    // Show details (using dynamic_cast since getDetails is not part of IRental)
+    if (auto* eCar = dynamic_cast<ElectricCar*>(rentals[0])) {
+        eCar->getDetails();
+    }
+    if (auto* lCar = dynamic_cast<LuxuryCar*>(rentals[1])) {
+        lCar->getDetails();
+    }
+    
     // Clean up
-    delete electricCar;
-    delete luxuryCar;
-    delete customer1;
-    delete customer2;
-
+    for (auto* rental : rentals) {
+        delete rental;
+    }
+    
     return 0;
 }

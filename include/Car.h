@@ -1,7 +1,7 @@
 #ifndef CAR_H
 #define CAR_H
 #include <string>
-#include <iostream>
+
 using namespace std;
 
 class Car {
@@ -14,10 +14,38 @@ private:
     bool isAvailable;
     static int carCount;
 
+
+protected:
+    virtual double calculateBasePrice(int days) const {
+        return days * rentalPrice;
+    }
+
 public:
     Car();
     Car(int id, string make, string model, int year, double rentalPrice);
     virtual ~Car();
+
+     double calculateRentalCost(int days) const {
+        return calculateBasePrice(days);
+    }
+    
+    bool isAvailable() const {
+        return isAvailable;
+    }
+    
+    void rent(int days) {
+        if (isAvailable) {
+            isAvailable = false;
+            std::cout << "Car rented for " << days << " days." << std::endl;
+        } else {
+            std::cout << "Car is not available." << std::endl;
+        }
+    }
+    
+    void returnItem() {
+        isAvailable = true;
+        std::cout << "Car returned successfully." << std::endl;
+    }
 
     // Basic getters and setters
     int getId() const;
