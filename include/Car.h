@@ -1,19 +1,18 @@
 #ifndef CAR_H
 #define CAR_H
+#include "IRental.h"
 #include <string>
-
 using namespace std;
 
-class Car {
+class Car : public IRental {
 private:
     int id;
     string make;
     string model;
     int year;
     double rentalPrice;
-    bool isAvailable;
+    bool available;
     static int carCount;
-
 
 protected:
     virtual double calculateBasePrice(int days) const {
@@ -25,77 +24,56 @@ public:
     Car(int id, string make, string model, int year, double rentalPrice);
     virtual ~Car();
 
-     double calculateRentalCost(int days) const {
+    double calculateRentalCost(int days) const override {
         return calculateBasePrice(days);
     }
     
-    bool isAvailable() const {
-        return isAvailable;
+    bool isAvailable() const override {
+        return available;
     }
     
-    void rent(int days) {
-        if (isAvailable) {
-            isAvailable = false;
-            std::cout << "Car rented for " << days << " days." << std::endl;
+    void rent(int days) override {
+        if (available && isValidRental(days)) {
+            available = false;
+            onRent(days);
         } else {
-            std::cout << "Car is not available." << std::endl;
+            onRentalFailed();
         }
     }
     
-    void returnItem() {
-        isAvailable = true;
-        std::cout << "Car returned successfully." << std::endl;
+    void returnItem() override {
+        available = true;
+        onReturn();
     }
 
-    // Basic getters and setters
+    virtual bool isValidRental(int days) const {
+        return days > 0;
+    }
+    
+    virtual void onRent(int days) {
+        cout << "Car rented for " << days << " days." << endl;
+    }
+    
+    virtual void onReturn() {
+        cout << "Car returned successfully." << endl;
+    }
+    
+    virtual void onRentalFailed() {
+        cout << "Car is not available." << endl;
+    }
+
     int getId() const;
     string getMake() const;
     string getModel() const;
     int getYear() const;
     double getRentalPrice() const;
-    bool isCarAvailable() const;
-
     void setMake(const string& newMake);
     void setModel(const string& newModel);
     void setYear(int newYear);
     void setRentalPrice(double newRentalPrice);
-    void setAvailability(bool availability);
-
+    
     virtual void getDetails() const = 0;
     static int getCarCount();
-};
-
-// rentalmanager class 
-class RentalManager {
-public:
-    static bool rentCar(Car* car) {
-        if (car->isCarAvailable()) {
-            car->setAvailability(false);
-            cout << "Car rented successfully." << endl;
-            return true;
-        }
-        cout << "Car is not available." << endl;
-        return false;
-    }
-
-    static bool rentCar(Car* car, int days) {
-        if (car->isCarAvailable()) {
-            car->setAvailability(false);
-            cout << "Car rented for " << days << " days." << endl;
-            return true;
-        }
-        cout << "Car is not available." << endl;
-        return false;
-    }
-
-    static void returnCar(Car* car) {
-        car->setAvailability(true);
-        cout << "Car returned successfully." << endl;
-    }
-
-    static bool checkAvailability(const Car* car) {
-        return car->isCarAvailable();
-    }
 };
 
 #endif

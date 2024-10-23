@@ -9,5 +9,4 @@ public:
     virtual void rent(int days) = 0;
     virtual void returnItem() = 0;
 };
-
 #endif
